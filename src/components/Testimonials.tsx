@@ -2,8 +2,10 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Star, Quote } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Testimonials = () => {
+  const { t } = useLanguage();
   const testimonials = [
     {
       name: "Sarah Johnson",
@@ -60,9 +62,9 @@ const Testimonials = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge className="bg-primary text-primary-foreground">Student Success Stories</Badge>
+          <Badge className="bg-primary text-primary-foreground">{t('testimonials.title')}</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            What My Students Say
+            {t('testimonials.subtitle')}
           </h2>
           <p className="text-lg text-muted-foreground">
             Real feedback from students who have transformed their academic performance 

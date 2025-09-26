@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, BookOpen } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Menu, X, BookOpen, Moon, Sun, Languages } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -29,31 +34,56 @@ const Navigation = () => {
               onClick={() => scrollToSection("home")}
               className="text-foreground hover:text-primary transition-smooth"
             >
-              Home
+              {t('nav.home')}
             </button>
             <button
               onClick={() => scrollToSection("about")}
               className="text-foreground hover:text-primary transition-smooth"
             >
-              About
+              {t('nav.about')}
             </button>
             <button
               onClick={() => scrollToSection("subjects")}
               className="text-foreground hover:text-primary transition-smooth"
             >
-              Subjects
+              {t('nav.subjects')}
             </button>
             <button
               onClick={() => scrollToSection("testimonials")}
               className="text-foreground hover:text-primary transition-smooth"
             >
-              Testimonials
+              {t('nav.testimonials')}
             </button>
+            
+            {/* Theme Toggle */}
+            <div className="flex items-center space-x-2">
+              <Sun className="h-4 w-4 text-foreground" />
+              <Switch
+                checked={theme === 'dark'}
+                onCheckedChange={toggleTheme}
+              />
+              <Moon className="h-4 w-4 text-foreground" />
+            </div>
+            
+            {/* Language Selector */}
+            <div className="flex items-center space-x-2">
+              <Languages className="h-4 w-4 text-foreground" />
+              <select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value as any)}
+                className="bg-background text-foreground border border-border rounded px-2 py-1 text-sm"
+              >
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+              </select>
+            </div>
+            
             <Button
               onClick={() => scrollToSection("contact")}
               className="bg-primary text-primary-foreground hover:bg-primary-glow shadow-button transition-bounce"
             >
-              Get Started
+              {t('nav.getStarted')}
             </Button>
           </div>
 
@@ -73,32 +103,61 @@ const Navigation = () => {
               onClick={() => scrollToSection("home")}
               className="block w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-accent transition-smooth"
             >
-              Home
+              {t('nav.home')}
             </button>
             <button
               onClick={() => scrollToSection("about")}
               className="block w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-accent transition-smooth"
             >
-              About
+              {t('nav.about')}
             </button>
             <button
               onClick={() => scrollToSection("subjects")}
               className="block w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-accent transition-smooth"
             >
-              Subjects
+              {t('nav.subjects')}
             </button>
             <button
               onClick={() => scrollToSection("testimonials")}
               className="block w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-accent transition-smooth"
             >
-              Testimonials
+              {t('nav.testimonials')}
             </button>
-            <div className="px-4">
+            
+            {/* Mobile Controls */}
+            <div className="px-4 space-y-3">
+              {/* Theme Toggle */}
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-foreground">Dark Mode</span>
+                <div className="flex items-center space-x-2">
+                  <Sun className="h-4 w-4 text-foreground" />
+                  <Switch
+                    checked={theme === 'dark'}
+                    onCheckedChange={toggleTheme}
+                  />
+                  <Moon className="h-4 w-4 text-foreground" />
+                </div>
+              </div>
+              
+              {/* Language Selector */}
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-foreground">Language</span>
+                <select
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value as any)}
+                  className="bg-background text-foreground border border-border rounded px-2 py-1 text-sm"
+                >
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="fr">Français</option>
+                </select>
+              </div>
+              
               <Button
                 onClick={() => scrollToSection("contact")}
                 className="w-full bg-primary text-primary-foreground hover:bg-primary-glow shadow-button transition-bounce"
               >
-                Get Started
+                {t('nav.getStarted')}
               </Button>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Calculator, 
   Atom, 
@@ -13,33 +14,34 @@ import {
 } from "lucide-react";
 
 const Subjects = () => {
+  const { t } = useLanguage();
   const subjects = [
     {
       icon: <Calculator className="h-8 w-8" />,
-      title: "Mathematics",
+      title: t('subjects.math.title'),
       levels: "Grade 6-12, A-Level",
-      description: "Algebra, Geometry, Calculus, Statistics, and more. Making complex math concepts clear and approachable.",
+      description: t('subjects.math.description'),
       features: ["Problem-solving techniques", "Exam preparation", "Interactive examples"]
     },
     {
       icon: <Atom className="h-8 w-8" />,
-      title: "Physics",
+      title: t('subjects.physics.title'),
       levels: "Grade 9-12, A-Level", 
-      description: "From basic mechanics to advanced quantum concepts. Building strong foundations in scientific thinking.",
+      description: t('subjects.physics.description'),
       features: ["Laboratory methods", "Real-world applications", "Theory & practice"]
     },
     {
       icon: <BarChart3 className="h-8 w-8" />,
-      title: "Chemistry",
+      title: t('subjects.chemistry.title'),
       levels: "Grade 9-12, A-Level",
-      description: "Organic, inorganic, and physical chemistry. Hands-on approach to chemical concepts.",
+      description: t('subjects.chemistry.description'),
       features: ["Reaction mechanisms", "Periodic trends", "Lab techniques"]
     },
     {
       icon: <BookOpen className="h-8 w-8" />,
-      title: "English",
+      title: t('subjects.english.title'),
       levels: "All Levels",
-      description: "Literature analysis, essay writing, grammar, and communication skills development.",
+      description: t('subjects.english.description'),
       features: ["Creative writing", "Critical analysis", "Grammar & vocabulary"]
     },
     {
@@ -70,9 +72,9 @@ const Subjects = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge className="bg-primary text-primary-foreground">Subjects Offered</Badge>
+          <Badge className="bg-primary text-primary-foreground">{t('subjects.title')}</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Comprehensive Tutoring Across Multiple Subjects
+            {t('subjects.subtitle')}
           </h2>
           <p className="text-lg text-muted-foreground">
             From foundational concepts to advanced topics, get the support you need 

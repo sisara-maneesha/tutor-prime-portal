@@ -1,8 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Award, Clock, Target } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
   const qualifications = [
     "Master's in Mathematics",
     "5+ Years Teaching Experience", 
@@ -35,14 +37,12 @@ const About = () => {
           {/* Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <Badge className="bg-primary text-primary-foreground">About Me</Badge>
+              <Badge className="bg-primary text-primary-foreground">{t('about.title')}</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Dedicated to Your Academic Success
+                {t('about.subtitle')}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                With over 5 years of experience in education, I've helped hundreds of students 
-                achieve their academic goals. My passion lies in making complex concepts simple 
-                and building confidence in every student I work with.
+                {t('about.description')}
               </p>
             </div>
 

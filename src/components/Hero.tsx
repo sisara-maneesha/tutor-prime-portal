@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Star, Users } from "lucide-react";
 import heroImage from "@/assets/hero-education.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
@@ -18,12 +21,11 @@ const Hero = () => {
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground leading-tight">
-                Unlock Your
-                <span className="block text-accent-vibrant">Academic Potential</span>
+                {t('hero.title')}
+                <span className="block text-accent-vibrant">{t('hero.subtitle')}</span>
               </h1>
               <p className="text-xl text-primary-foreground/90 leading-relaxed">
-                Personalized tutoring that transforms students into confident learners. 
-                Expert guidance across multiple subjects with proven results.
+                {t('hero.description')}
               </p>
             </div>
 
@@ -33,15 +35,15 @@ const Hero = () => {
                 <div className="flex items-center justify-center w-12 h-12 bg-accent-vibrant rounded-full mb-2 mx-auto">
                   <Users className="h-6 w-6 text-primary" />
                 </div>
-                <div className="text-2xl font-bold text-primary-foreground">200+</div>
-                <div className="text-sm text-primary-foreground/80">Students Taught</div>
+                <div className="text-2xl font-bold text-primary-foreground">{t('about.experience')}</div>
+                <div className="text-sm text-primary-foreground/80">{t('about.students')}</div>
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center w-12 h-12 bg-accent-vibrant rounded-full mb-2 mx-auto">
                   <Star className="h-6 w-6 text-primary" />
                 </div>
-                <div className="text-2xl font-bold text-primary-foreground">95%</div>
-                <div className="text-sm text-primary-foreground/80">Success Rate</div>
+                <div className="text-2xl font-bold text-primary-foreground">{t('about.satisfaction')}</div>
+                <div className="text-sm text-primary-foreground/80">{t('about.subjects')}</div>
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center w-12 h-12 bg-accent-vibrant rounded-full mb-2 mx-auto">
@@ -59,7 +61,7 @@ const Hero = () => {
                 size="lg"
                 className="bg-accent-vibrant text-primary hover:bg-accent-vibrant/90 shadow-button transition-bounce"
               >
-                Start Learning Today
+                {t('hero.cta')}
               </Button>
               <Button
                 onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
@@ -67,7 +69,7 @@ const Hero = () => {
                 size="lg"
                 className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-bounce"
               >
-                Learn More About Me
+                {t('hero.learnMore')}
               </Button>
             </div>
           </div>

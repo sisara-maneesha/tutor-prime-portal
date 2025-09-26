@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Mail, 
   Phone, 
@@ -19,6 +20,7 @@ import {
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -65,19 +67,19 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: <Mail className="h-5 w-5" />,
-      title: "Email",
+      title: t('contact.email'),
       value: "tutor@edututor.com",
       description: "Send me a detailed message"
     },
     {
       icon: <Phone className="h-5 w-5" />,
-      title: "Phone",
+      title: t('contact.phone'),
       value: "+1 (555) 123-4567",
       description: "Call for immediate assistance"
     },
     {
       icon: <MapPin className="h-5 w-5" />,
-      title: "Location",
+      title: t('contact.location'),
       value: "Online & In-Person",
       description: "Flexible learning options"
     },
@@ -94,13 +96,12 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge className="bg-primary text-primary-foreground">Get In Touch</Badge>
+          <Badge className="bg-primary text-primary-foreground">{t('contact.title')}</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Ready to Start Learning?
+            {t('contact.subtitle')}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Take the first step towards academic success. Contact me today to discuss 
-            your learning goals and schedule your first session.
+            {t('contact.description')}
           </p>
         </div>
 
@@ -137,7 +138,7 @@ const Contact = () => {
               <CardContent className="space-y-3">
                 <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-glow transition-smooth">
                   <Calendar className="h-4 w-4 mr-2" />
-                  Schedule Free Consultation
+                  {t('contact.schedule')}
                 </Button>
                 <Button variant="outline" className="w-full">
                   <Phone className="h-4 w-4 mr-2" />
@@ -160,23 +161,23 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Full Name *</Label>
+                      <Label htmlFor="name">{t('contact.name')} *</Label>
                       <Input
                         id="name"
                         value={formData.name}
                         onChange={(e) => handleInputChange("name", e.target.value)}
-                        placeholder="Your full name"
+                        placeholder={t('contact.namePlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="email">{t('contact.email')} *</Label>
                       <Input
                         id="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
-                        placeholder="your.email@example.com"
+                        placeholder={t('contact.emailPlaceholder')}
                         required
                       />
                     </div>
@@ -216,31 +217,22 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Subject of Interest *</Label>
+                    <Label htmlFor="subject">{t('contact.subject')} *</Label>
                     <Select onValueChange={(value) => handleInputChange("subject", value)}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select subject you need help with" />
+                        <SelectValue placeholder={t('contact.subjectPlaceholder')} />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="mathematics">Mathematics</SelectItem>
-                        <SelectItem value="physics">Physics</SelectItem>
-                        <SelectItem value="chemistry">Chemistry</SelectItem>
-                        <SelectItem value="english">English</SelectItem>
-                        <SelectItem value="geography">Geography</SelectItem>
-                        <SelectItem value="languages">Languages</SelectItem>
-                        <SelectItem value="multiple">Multiple Subjects</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
+...
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message">{t('contact.message')} *</Label>
                     <Textarea
                       id="message"
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      placeholder="Tell me about your learning goals, current challenges, and what you'd like to achieve..."
+                      placeholder={t('contact.messagePlaceholder')}
                       rows={4}
                       required
                     />
@@ -252,7 +244,7 @@ const Contact = () => {
                     className="w-full bg-primary text-primary-foreground hover:bg-primary-glow shadow-button transition-bounce"
                   >
                     <Send className="h-4 w-4 mr-2" />
-                    Send Message
+                    {t('contact.send')}
                   </Button>
                 </form>
               </CardContent>

@@ -1,7 +1,9 @@
 import { BookOpen, Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -21,8 +23,7 @@ const Footer = () => {
               <span className="text-2xl font-bold">EduTutor</span>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
-              Empowering students to achieve their academic goals through 
-              personalized tutoring and dedicated support.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-2 text-accent-vibrant">
               <span className="text-2xl">⭐</span>
@@ -35,7 +36,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-accent-vibrant">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-accent-vibrant">{t('footer.quickLinks')}</h3>
             <div className="space-y-2">
               <button
                 onClick={() => scrollToSection("home")}
@@ -66,7 +67,7 @@ const Footer = () => {
 
           {/* Subjects */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-accent-vibrant">Subjects Offered</h3>
+            <h3 className="text-lg font-semibold text-accent-vibrant">{t('footer.subjects')}</h3>
             <div className="space-y-2 text-primary-foreground/80">
               <div>Mathematics</div>
               <div>Physics</div>
@@ -79,7 +80,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-accent-vibrant">Get In Touch</h3>
+            <h3 className="text-lg font-semibold text-accent-vibrant">{t('footer.contact')}</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-primary-foreground/80">
                 <Mail className="h-4 w-4" />
@@ -100,7 +101,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-primary-foreground/80 text-sm">
-            © {currentYear} EduTutor. All rights reserved.
+            © {currentYear} EduTutor. {t('footer.rights')}
           </div>
           <div className="flex space-x-6 text-sm">
             <span className="text-primary-foreground/80 hover:text-accent-vibrant transition-smooth cursor-pointer">
