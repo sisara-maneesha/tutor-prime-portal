@@ -101,7 +101,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-primary-foreground/80 text-sm">
-            © {currentYear} EduTutor. {t('footer.rights')}
+            © {currentYear} AshenScience.lk. {t('footer.rights')}
           </div>
           <div className="flex space-x-6 text-sm">
             <span className="text-primary-foreground/80 hover:text-accent-vibrant transition-smooth cursor-pointer">
