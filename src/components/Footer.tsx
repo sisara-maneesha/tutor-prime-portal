@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <BookOpen className="h-8 w-8 text-accent-vibrant" />
-              <span className="text-2xl font-bold">EduTutor</span>
+              <span className="text-2xl font-bold">AshenScience</span>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
               {t('footer.description')}
