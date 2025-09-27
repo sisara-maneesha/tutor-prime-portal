@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { translations } from '../translations';
 
-type Language = 'en' | 'es' | 'fr';
+type Language = 'en' | 'es' | 'fr' | 'si';
 
 interface LanguageContextType {
   language: Language;

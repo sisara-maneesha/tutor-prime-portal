@@ -76,6 +76,7 @@ const Navigation = () => {
                 <option value="en">EN</option>
                 <option value="es">ES</option>
                 <option value="fr">FR</option>
+                <option value="si">සි</option>
               </select>
             </div>
             
@@ -150,6 +151,7 @@ const Navigation = () => {
                   <option value="en">English</option>
                   <option value="es">Español</option>
                   <option value="fr">Français</option>
+                  <option value="si">සිංහල</option>
                 </select>
               </div>
               
